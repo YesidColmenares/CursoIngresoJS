@@ -107,5 +107,5 @@ function Materiales ()
     respuesta = `Se deben comprar ${cemento_Total} bolsas de cemento y ${cal_Total} bolsas de cal para el area indicado`;
 
     //mostrar en pantalla
-    alert(respuesta);
+    alert(respuest);
 }
