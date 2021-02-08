@@ -10,11 +10,12 @@ function Rectangulo ()
     let largo;
     let ancho;
     let perimetro;
-    let total;
+    let total_Alambre;
     let respuesta;
 
     //constante
     const CANT_ALAMBRE = 3;
+    const NUMERO_DOS = 2;
 
     //obtencion de datos
     largo = document.getElementById('txtIdLargo').value;
@@ -25,13 +26,13 @@ function Rectangulo ()
     ancho = parseFloat(ancho);
 
     //operacion hayar el perimetro
-    perimetro = (ancho + largo) * 2;
+    perimetro = (ancho + largo) * NUMERO_DOS;
 
     //operacion cuanto alambre en total
-    total = perimetro * CANT_ALAMBRE;
+    total_Alambre = perimetro * CANT_ALAMBRE;
     
     //Texto de respuesta
-    respuesta = `Se deben comprar ${total} metros de alambre`;
+    respuesta = `Se deben comprar ${total_Alambre} metros de alambre`;
 
     //mostrar en pantalla
     alert(respuesta);
@@ -40,14 +41,14 @@ function Circulo ()
 {
     //variables
 	let radio;
-    let total;
     let diametro;
+    let total_Alambre;
     let respuesta;
 
     //constantes
     const NUMERO_PI = 3.1415;
     const CANT_ALAMBRE = 3;
-    const DIAMETRO = 2;
+    const NUMERO_DOS = 2;
 
     //obtencion de los datos
     radio = document.getElementById('txtIdRadio').value;
@@ -55,17 +56,17 @@ function Circulo ()
     //parseo a tipo float
     radio = parseFloat(radio);
 
-    //operacion sacando el diametro de la circunferencia 
-    diametro = (radio * DIAMETRO);
+    //operacion obteniendo el diametro a partir del radio
+    diametro = (radio * NUMERO_DOS);
 
-    //operacion sacando el perimetro
+    //operacion obteniendo el perimetro
     perimetro = diametro * NUMERO_PI;
 
-    //operacion sacando los metros de alambre
-    total = perimetro * CANT_ALAMBRE;
+    //operacion obteniendo los metros de alambre
+    total_Alambre = perimetro * CANT_ALAMBRE;
 
     //texto de respuesta 
-    respuesta = `Se deben comprar ${total} metros de alambre`;
+    respuesta = `Se deben comprar ${total_Alambre} metros de alambre`;
 
     //mostrar en pantalla 
     alert(respuesta);
@@ -76,31 +77,35 @@ function Materiales ()
 	//variables
     let largo;
     let ancho;
-    let perimetro;
-    let total;
+    let cemento_Total;
+    let cal_Total;
+    let total_Cuadros;
     let respuesta;
 
     //constante
-    const CEMENTO = 2;
-    const CAL = 3;
+    const CANT_CEMENTO = 2;
+    const CANT_CAL = 3;
 
     //obtencion de datos
     largo = document.getElementById('txtIdLargo').value;
     ancho = document.getElementById('txtIdAncho').value;
     
     //parseo
-    largo = parseFloat(largo);
-    ancho = parseFloat(ancho);
+    largo = parseInt(largo);
+    ancho = parseInt(ancho);
 
-    //operacion hayar el perimetro
-    perimetro = (ancho + largo) * 2;
+    //operacion para calcular los cuadros en total del terreno rectangular 
+    total_Cuadros = largo * ancho;
 
-    //operacion cuanto alambre en total
-    total = perimetro * CANT_ALAMBRE;
+    //operacion para calcular la cantidad de cemento a utilizar
+    cemento_Total = total_Cuadros * CANT_CEMENTO;
     
+    //operacion para calcular la cantidad de cal a utilizar 
+    cal_Total = total_Cuadros * CANT_CAL;
+
     //Texto de respuesta
-    respuesta = `Se deben comprar ${total} metros de alambre`;
+    respuesta = `Se deben comprar ${cemento_Total} bolsas de cemento y ${cal_Total} bolsas de cal para el area indicado`;
 
     //mostrar en pantalla
-    alert(respues);
+    alert(respuesta);
 }
