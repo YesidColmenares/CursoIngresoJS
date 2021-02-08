@@ -102,5 +102,5 @@ function Materiales ()
     respuesta = `Se deben comprar ${total} metros de alambre`;
 
     //mostrar en pantalla
-    alert(respuesta);
+    alert(respuest);
 }
