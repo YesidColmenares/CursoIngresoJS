@@ -1,5 +1,6 @@
 function mostrar() {
 	let valorMes;
+	let mensaje;
 	valorMes = document.getElementById('txtIdMes').value;
 
 	switch (valorMes) 
@@ -12,5 +13,5 @@ function mostrar() {
 			mensaje = "Este mes tiene 30 o mas dias";
 			break;
 	}
-alert(mensaje);
+	alert(mensaje);
 }//FIN DE LA FUNCIÓN

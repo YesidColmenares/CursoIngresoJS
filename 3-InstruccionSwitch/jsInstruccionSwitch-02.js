@@ -1,5 +1,8 @@
 function mostrar() {
-	let valorMes = document.getElementById('txtIdMes').value;
+	let valorMes;
+	let mensaje;
+	
+	valorMes= document.getElementById('txtIdMes').value;
 
 	switch (valorMes) {
 		case "Enero":
@@ -23,5 +26,5 @@ function mostrar() {
 			mensaje = "Ya pasamos el frio, ahora calor";
 			break;
 	}
-	alert(mensaje)
+	alert(mensaje);
 }//FIN DE LA FUNCIÓN
