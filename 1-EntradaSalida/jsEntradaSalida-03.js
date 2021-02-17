@@ -6,7 +6,6 @@ function mostrar()
 	let nombreIngresado;
 	nombreIngresado=txtIdNombre.value; // compatible con navegadores chrome
 	nombreIngresado=document.getElementById('txtIdNombre').value; //compatible con todos los navegadores
-	// nombreIngresado=document.getElementById('txtidNombre').value; = Error en el id del cuadro 
 	alert(nombreIngresado);
 
 }

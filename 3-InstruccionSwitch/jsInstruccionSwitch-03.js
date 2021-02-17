@@ -5,11 +5,12 @@ function mostrar() {
 	switch (valorMes) 
 	{
 		case "Febrero":
-			alert("Este mes no tiene mas de 29 dias");
+			mensaje = "Este mes no tiene mas de 29 dias";
 			break;
 
 		default:
-			alert("Este mes tiene 30 o mas dias");
+			mensaje = "Este mes tiene 30 o mas dias";
 			break;
 	}
+alert(mensaje);
 }//FIN DE LA FUNCIÓN
