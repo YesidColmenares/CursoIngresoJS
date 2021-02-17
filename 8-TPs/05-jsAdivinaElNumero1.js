@@ -12,8 +12,15 @@ var contadorIntentos;
 
 function comenzar()
 {
+  var numeroRandomSecreto;
+  var numeroIngresado;
+
 	//Genero el número RANDOM entre 1 y 100
-	 
+	numeroRandomSecreto = Math.floor(Math.random() *100) + 1;
+
+  numeroIngresado = socument.getElementById('txtIdNumero').value;
+
+  
 		//alert(numeroSecreto );
 	
 
