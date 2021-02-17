@@ -1,73 +1,63 @@
-function mostrar()
-{
+function mostrar() {
 	var destinoIngresado;
 	var estacionIngresada;
 	var precioFinal;
-	var descuento;
-	var aumento;
+	var porcentaje;
 
 	const TARIFABASE = 15000;
 
 	destinoIngresado = document.getElementById('txtIdDestino').value;
 	estacionIngresada = document.getElementById('txtIdEstacion').value;
 
-	if(estacionIngresada == "Invierno")
+	switch (estacionIngresada) 
 	{
-		switch(destinoIngresado)
-		{
-			case "Cataratas":
-			case "Cordoba":
-				descuento = 10;
-				precioFinal = TARIFABASE - TARIFABASE *(descuento/100);
-				break;
-			case "Mar del plata":
-				descuento = 20;
-				precioFinal = TARIFABASE - TARIFABASE *(descuento/100);
-				break;
-			case "Bariloche":
-				aumento = 20;
-				precioFinal = TARIFABASE + TARIFABASE *(aumento/100);
-				break;
-		}
-	}
-	else
-	{
-		if(estacionIngresada == "Verano")
-		{
-			switch(destinoIngresado)
+		case "Invierno":
+			switch (destinoIngresado) 
 			{
-			case "Cataratas":
-			case "Cordoba":
-				aumento = 10;
-				precioFinal = TARIFABASE + TARIFABASE *(aumento/100);
-				break;
-			case "Mar del plata":
-				aumento = 20;
-				precioFinal = TARIFABASE + TARIFABASE *(aumento/100);
-				break;
-			case "Bariloche":
-				descuento = 20;
-				precioFinal = TARIFABASE - TARIFABASE *(descuento/100);
-				break;
+				case "Cataratas":
+				case "Cordoba":
+					porcentaje = -10;
+					break;
+				case "Mar del plata":
+					porcentaje = -20;
+					break;
+				case "Bariloche":
+					porcentaje = 20;
+					break;
 			}
-		}
-		else
-		{
-			switch(destinoIngresado)
+			break;
+		case "Verano":
+			switch (destinoIngresado) 
 			{
-			case "Bariloche":
-			case "Cataratas":
-			case "Mar del plata":
-				aumento = 10;
-				precioFinal = TARIFABASE + TARIFABASE *(aumento/100);
-				break;
-			case "Cordoba":
-				descuento = 0;
-				precioFinal = TARIFABASE - TARIFABASE *(descuento/100);
-				break;
+				case "Cataratas":
+				case "Cordoba":
+					porcentaje = 10;
+					break;
+				case "Mar del plata":
+					porcentaje = 20;
+					break;
+				case "Bariloche":
+					porcentaje = -20;
+					break;
 			}
-		}
+			break;
+		default:
+			switch (destinoIngresado) 
+			{
+				case "Bariloche":
+				case "Cataratas":
+				case "Mar del plata":
+					porcentaje = 10;
+					break;
+				case "Cordoba":
+					procentaje = 0;
+					break;
+			}
+			break;
+
 	}
+
+    precioFinal = TARIFABASE + TARIFABASE * (porcentaje / 100);
 	alert(precioFinal);
 
 }//FIN DE LA FUNCIÓN

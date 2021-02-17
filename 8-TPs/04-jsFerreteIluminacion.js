@@ -8,81 +8,125 @@ E.	Si el importe final con descuento suma más de $120  se debe sumar un 10% de 
  ”Usted pago X de IIBB.”, siendo X el impuesto que se pagó. 
 
  */
-function CalcularPrecio () 
-{
+function CalcularPrecio() {
     let cantidadDeLamparas;
     let marcaSeleccionada;
     let descuento;
     let precioBruto;
     let interes_IIBB;
-    
+
     cantidadDeLamparas = document.getElementById('txtIdCantidad').value;
+    cantidadDeLamparas = parseInt(cantidadDeLamparas);
+
     marcaSeleccionada = document.getElementById('Marca').value;
-    
+
     precioBruto = cantidadDeLamparas * 35;
 
-    if(cantidadDeLamparas > 6)
-    {
-        descuento = 50;
+
+    if (cantidadDeLamparas == 5) {
+        switch (marcaSeleccionada) {
+            case "ArgentinaLuz":
+                descuento = 40;
+                break;
+            default:
+                descuento = 30;
+                break;
+        }
     }
-    else
-    {
-        if(cantidadDeLamparas == 5)
-        {
-            if(marcaSeleccionada == "ArgentinaLuz")
-            {
+    else {
+        if (cantidadDeLamparas == 4) {
+            switch (marcaSeleccionada) {
+                case "ArgentinaLuz":
+                case "FelipeLamparas":
+                    descuento = 25;
+                    break;
+                default:
+                    descuento = 20;
+                    break;
+            }
+        }
+        else {
+            if (cantidadDeLamparas == 3) {
+                switch (marcaSeleccionada) {
+                    case "ArgentinaLuz":
+                        descuento = 15;
+                        break;
+                    case "FelipeLamparas":
+                        descuento = 10;
+                        break;
+                    default:
+                        descuento = 5;
+                        break;
+                }
+            }
+            else {
+                if (cantidadDeLamparas < 3) {
+                    descuento = 0;
+                }
+                else {
+                    descuento = 50;
+                }
+            }
+        }
+    }
+
+    precioFinal = precioBruto - precioBruto * (descuento / 100);
+
+    if (precioFinal > 120) {
+        interes_IIBB = precioFinal * 0.1;
+        alert(`Usted pago ${interes_IIBB} de IIBB.`);
+    }
+    document.getElementById('txtIdprecioDescuento').value = precioFinal;
+}
+
+
+/*    switch (cantidadDeLamparas) {
+        case 5:
+            if (marcaSeleccionada == "ArgentinaLuz") {
                 descuento = 40;
             }
-            else
-            {
+            else {
                 descuento = 30;
             }
-        }
-        else 
-        {
-            if(cantidadDeLamparas == 4)
-            {
-                if(marcaSeleccionada == "ArgentinaLuz" || marcaSeleccionada == "FelipeLamparas")
-                {
-                    descuento = 25;
-                }
-                else
-                {
-                    descuento = 20;
-                }
+            break;
+        case 4:
+            if (marcaSeleccionada == "ArgentinaLuz" || marcaSeleccionada == "FelipeLamparas") {
+                descuento = 25;
             }
-            else
-            {
-                if(cantidadDeLamparas == 3)
-                {
-                    if(marcaSeleccionada == "ArgentinaLuz")
-                    {
-                        descuento = 15;
-                    }
-                    else
-                    {
-                        if(marcaSeleccionada == "FelipeLamparas")
-                        {
-                            descuento = 10;
-                        }
-                        else
-                        {
-                            descuento = 5;
-                        }
-                    }
-                }
+            else {
+                descuento = 20;
             }
-        }
+            break;
+        case 3:
+            if (marcaSeleccionada == "ArgentinaLuz") {
+                descuento = 15;
+            }
+            else {
+                if (marcaSeleccionada == "FelipeLamparas") {
+                    descuento = 10;
+                }
+                else {
+                    descuento = 5;
+                }
+
+            }
+            break;
+        default:
+            if (cantidadDeLamparas < 3) {
+                descuento = 0;
+            }
+            else{
+                descuento = 50;
+            }
+            break;
     }
 
-    precioFinal = precioBruto - precioBruto * (descuento/100);
+    precioFinal = precioBruto - precioBruto * (descuento / 100);
 
-    if(precioFinal > 120)
-    {
+    if (precioFinal > 120) {
         interes_IIBB = precioFinal * 0.1;
 
         alert(`Usted pago ${interes_IIBB} de IIBB.`);
     }
-
     document.getElementById('txtIdprecioDescuento').value = precioFinal;
-}
+} */
