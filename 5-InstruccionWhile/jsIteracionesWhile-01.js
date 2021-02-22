@@ -6,7 +6,7 @@ function mostrar()
 	let contador;
     let lista;
 
-	contador = 0;
+	contador = 1;
 	lista = "";
 
 	while(contador < 11)

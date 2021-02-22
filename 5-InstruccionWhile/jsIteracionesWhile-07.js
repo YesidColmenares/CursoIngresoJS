@@ -6,13 +6,21 @@ function mostrar()
 {
 	var contador;
 	var acumulador;
-	var respuesta;
+	var respuestaIngresada;
+
 	contador=0;
 	acumulador=0;
-	respuesta='si';
+	respuestaIngresada="";
 
+	do
+	{
+		acumulador += parseInt(prompt("Ingresa un numero"));
+		contador ++;
+		respuestaIngresada = prompt("Quieres seguir?");
 
-	txtIdSuma.value=acumulador;
-	txtIdPromedio.value=acumulador/contador;
+	}while(respuestaIngresada == "si");
+
+	document.getElementById('txtIdSuma').value=acumulador;
+	document.getElementById('txtIdPromedio').value=acumulador/contador;
 
 }//FIN DE LA FUNCIÓN
