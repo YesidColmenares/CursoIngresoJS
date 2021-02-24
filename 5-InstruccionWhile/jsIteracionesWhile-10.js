@@ -16,21 +16,19 @@ function mostrar() {
 	let respuestaIngresada;
 	let cantidadPositivos;
 	let cantidadNegativos;
-	let cantidadNumerosPares;
 	let sumaPositivos;
 	let sumaNegativos;
 	let promedioPositivos;
 	let promedioNegativos;
 	let diferencia;
-	let banderaDelPrimero;
 
 	//iniciar variables
 	cantidadPositivos = 0;
 	cantidadNegativos = 0;
-	cantidadNumerosPares = 0;
+	cantidadPares = 0;
+	cantidadCeros = 0;
 	sumaPositivos = 0;
 	sumaNegativos = 0;
-	banderaDelPrimero == true;
 
 
 	do {
@@ -42,7 +40,7 @@ function mostrar() {
 			cantidadPositivos++;
 
 			if (!(valorNumericoIngresado % 2)) {
-				cantidadNumerosPares++;
+				cantidadPares++;
 			}
 		}
 		else {
@@ -50,19 +48,25 @@ function mostrar() {
 				sumaNegativos += valorNumericoIngresado;
 				cantidadNegativos++;
 			}
+			else {
+				cantidadCeros++;
+			}
 		}
-
+ 
 	} while (respuestaIngresada == "si");
 
-	if (cantidadPositivos == 0 || cantidadNegativos == 0) {
+
+	if (cantidadPositivos == 0 && cantidadNegativos == 0) {
 		promedioPositivos = 0;
 		promedioNegativos = 0;
 	}
-	if (cantidadNegativos != 0 ) {
-		promedioNegativos = (sumaNegativos / cantidadNegativos).toFixed(2);
-	}
-	if (cantidadPositivos != 0) {
-		promedioPositivos = (sumaPositivos / cantidadPositivos).toFixed(2);
+	else {
+		if (cantidadNegativos != 0) {
+			promedioNegativos = (sumaNegativos / cantidadNegativos).toFixed(2);
+		}
+		if (cantidadPositivos != 0) {
+			promedioPositivos = (sumaPositivos / cantidadPositivos).toFixed(2);
+		}
 	}
 
 	diferencia = (sumaPositivos - sumaNegativos);
@@ -71,8 +75,8 @@ function mostrar() {
 	                2. suma de los positivos es: ${sumaPositivos}<br>
                     3. cantidad de positivos es: ${cantidadPositivos}<br>
                     4. cantidad de negativos es: ${cantidadNegativos}<br>
-                    5. cantidad de ceros es: <br>
-                    6. cantidad de numeros pares es: ${cantidadNumerosPares}<br>
+                    5. cantidad de ceros es: ${cantidadCeros}<br>
+                    6. cantidad de numeros pares es: ${cantidadPares}<br>
                     7. Promedio de positivos: ${promedioPositivos}<br>
                     8. Promedio de negativos: ${promedioNegativos}<br>
                     9. Diferencia entre positivos y negativos: ${diferencia}`);

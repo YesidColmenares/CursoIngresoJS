@@ -20,11 +20,9 @@ function mostrar() {
 			sumaPositivos += valorNumericoIngresado;
 		}
 		else {
-
 			multiplicacionNegativos *= valorNumericoIngresado;
 			contador++;
 		}
-
 	} while (respuestaIngresada == "si");
 
 	if (contador == 0) {
