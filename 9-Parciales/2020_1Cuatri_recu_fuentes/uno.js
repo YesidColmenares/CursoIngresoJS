@@ -43,14 +43,14 @@ function mostrar() {
 	while (contadorDeVueltas < 5) 
 	{
 		tipoIngresado = prompt("Ingrese tipo");
-		while (isNan(cantidadIngresada) == false || tipoIngresado != "barbijo" && tipoIngresado != "jabon" && tipoIngresado != "alcohol") //validacion
+		while (isNan(tipoIngresado) == false || tipoIngresado != "barbijo" && tipoIngresado != "jabon" && tipoIngresado != "alcohol") //validacion
 		{
 			tipoIngresado = prompt("Error, Ingrese tipo de nuevo");
 		}
 
 		precioIngresado = prompt("Ingrese precio");
 		precioIngresado = parseInt(precioIngresado);
-		while (isNan(cantidadIngresada) == true || precioIngresado < 100 || precioIngresado > 300) 
+		while (isNan(precioIngresado) == true || precioIngresado < 100 || precioIngresado > 300) 
 		{
 			precioIngresado = prompt("Error, Ingrese precio de nuevo");
 			precioIngresado = parseInt(precioIngresado);
