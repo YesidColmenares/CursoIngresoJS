@@ -11,120 +11,126 @@ b) el importe total a pagar con descuento(solo si corresponde)
 d) Informar el tipo con mas cantidad de bolsas.
 f) El tipo mas caro
 */
-function mostrar() 
-{
+function mostrar() {
 
-	let contadorDeVueltas;
-	let tipoIngresado;
-	let cantidadBolsasIngresado;
-	let precioPorBolsaIngresada;
-	let totalCantidadBolsas;
+    let estadoWhileIngresado;
+    let tipoProductoIngresado;
+    let cantidadBolsaIngresado;
+    let precioBolsaIngresado;
 
-	let contadorArena;
-	let contadorCal;
-	let contadorCemento;
-	let acumuladorArena;
-	let acumuladorCal;
-	let acumuladorCemento;
-	let totalPrecioBruto;
-  let tipoConMayorCantidadBolsas;
-  let descuento;
+    let cantidadBolsasTotal;
+    let precioTotalSinDescuento;
+    let cantidadBolsasArena;
+    let cantidadBolsasCal;
+    let cantidadBolsasCemento;
+    let tipoMasUnidadesBolsa;
+    let tipoMasCaroArena;
+    let tipoMasCaroCal;
+    let tipoMasCaroCemento;
+    let tipoMasCaro;
+    let precioTotalSinDescuentoArena;
+    let precioTotalSinDescuentoCal;
+    let precioTotalSinDescuentoCemento;
 
-	contadorArena = 0;
-	contadorCal = 0;
-	contadorCemento = 0;
-	acumuladorArena = 0;
-	acumuladorCal = 0;
-	acumuladorCemento = 0;
+    precioTotalSinDescuentoCemento = 0;
+    precioTotalSinDescuentoCal = 0;
+    precioTotalSinDescuentoArena = 0;
+    cantidadBolsasArena = 0;
+    cantidadBolsasCal = 0;
+    cantidadBolsasCemento = 0;
+    cantidadBolsasTotal = 0;
+    estadoWhileIngresado = "s";
 
 
+    while (estadoWhileIngresado == "s") {
+        tipoProductoIngresado = prompt("Ingrese el tipo");
+        while (isNaN(tipoProductoIngresado) == false || tipoProductoIngresado != "arena" && tipoProductoIngresado != "cal" && tipoProductoIngresado != "cemento") {
+            tipoProductoIngresado = prompt("Error, Ingrese el tipo");
+        }
 
-	do 
-	{
+        cantidadBolsaIngresado = prompt("Ingrese la cantidad de bolsas");
+        cantidadBolsaIngresado = parseInt(cantidadBolsaIngresado);
+        while (isNaN(cantidadBolsaIngresado) == true) {
+            cantidadBolsaIngresado = prompt("Error, Ingrese la cantidad de bolsas");
+            cantidadBolsaIngresado = parseInt(cantidadBolsaIngresado);
+        }
 
-		tipoIngresado = prompt("Ingrese tipo");
-		while (isNaN(tipoIngresado) == false || tipoIngresado != "arena" && tipoIngresado != "cal" && tipoIngresado != "cemento") //validacion
-		{
-			tipoIngresado = prompt("Error, Ingrese tipo de nuevo");
-		}
+        precioBolsaIngresado = prompt("Ingrese el precio por bolsa");
+        precioBolsaIngresado = parseInt(precioBolsaIngresado);
+        while (isNaN(precioBolsaIngresado) == true || precioBolsaIngresado < 1) {
+            precioBolsaIngresado = prompt("Error, Ingrese el precio por bolsa");
+            precioBolsaIngresado = parseInt(precioBolsaIngresado);
+        }
 
-		cantidadBolsasIngresado = prompt("Ingrese cantidad de bolsas");
-		cantidadBolsasIngresado = parseInt(cantidadBolsasIngresado);
-		while (isNaN(cantidadBolsasIngresado) == true) 
-		{
-			cantidadBolsasIngresado = prompt("Error, Ingrese cantidad de bolsas");
-			cantidadBolsasIngresado = parseInt(cantidadBolsasIngresado);
-		}
+        switch (tipoProductoIngresado) {
+            case "arena":
+                cantidadBolsasArena += cantidadBolsaIngresado;
+                tipoMasCaroArena = precioBolsaIngresado;
+                precioTotalSinDescuentoArena += cantidadBolsaIngresado * precioBolsaIngresado;
+                break;
+            case "cal":
+                cantidadBolsasCal += cantidadBolsaIngresado;
+                tipoMasCaroCal = precioBolsaIngresado;
+                precioTotalSinDescuentoCal += cantidadBolsaIngresado * precioBolsaIngresado;
+                break;
+            case "cemento":
+                cantidadBolsasCemento += cantidadBolsaIngresado;
+                tipoMasCaroCemento = precioBolsaIngresado;
+                precioTotalSinDescuentoCemento += cantidadBolsaIngresado * precioBolsaIngresado;
+                break;
+        }     
 
-		precioPorBolsaIngresada = prompt("Ingrese precio de la bolsa");
-		precioPorBolsaIngresada = parseInt(precioPorBolsaIngresada);
-		while (isNaN(precioPorBolsaIngresada) == true || precioPorBolsaIngresada < 0) 
-		{
-			precioPorBolsaIngresada = prompt("Error, Ingrese precio de la bolsa");
-			precioPorBolsaIngresada = parseInt(precioPorBolsaIngresada);
-		}
+        estadoWhileIngresado = prompt("Ingrese 's' para continuar, de lo contrario ingrese 'n'")
+    }
+    //A. El importe total a pagar, bruto sin descuento
+    precioTotalSinDescuento = (precioTotalSinDescuentoArena + precioTotalSinDescuentoCal + precioTotalSinDescuentoCemento);
+    
+    //B. El importe total a pagar con descuento
+    cantidadBolsasTotal = cantidadBolsasArena + cantidadBolsasCal + cantidadBolsasCemento;
+    if (cantidadBolsasTotal > 10 && cantidadBolsaIngresado < 30) {
+        precioTotalConDescuento = precioTotalSinDescuento + precioTotalSinDescuento * (-15 / 100);
+        mensaje = `El importe total a pagar con descuento es: ${precioTotalConDescuento}`
+    }
+    else {
+        if (cantidadBolsasTotal > 30) {
+            precioTotalConDescuento = precioTotalSinDescuento + precioTotalSinDescuento * (-25 / 100);
+            mensaje = `El importe total a pagar con descuento es: ${precioTotalConDescuento}`
+        }
+        else {
+            mensaje = `No tienes descuento`
+        }
 
-		// a) El importe total a pagar , bruto sin descuento
-		switch (tipoIngresado) 
-		{
-			case "Arena":
-				contadorArena++;
-				totalPrecioBruto = cantidadBolsasIngresado * precioPorBolsaIngresada;
-        totalPrecioBruto += totalPrecioBruto;
-				acumuladorArena += cantidadBolsasIngresado;
-				break;
-			case "cal":
-				contadorCal++;
-				totalPrecioBruto = cantidadBolsasIngresado * precioPorBolsaIngresada;
-        totalPrecioBruto += totalPrecioBruto;
-				acumuladorCal += cantidadBolsasIngresado;
-				break;
-			case "cemento":
-				contadorCemento++;
-				totalPrecioBruto = cantidadBolsasIngresado * precioPorBolsaIngresada;
-        totalPrecioBruto += totalPrecioBruto;
-				acumuladorCemento += cantidadBolsasIngresado;
-        break;
-		}
-
-		contadorDeVueltas = prompt("presione 's' si quiere continuar, de lo contrario presione 'n'");
-	} while (contadorDeVueltas == "s");
-
-	//b) el importe total a pagar con descuento
-	totalCantidadBolsas = acumuladorArena + acumuladorCal + acumuladorCemento;
-	if (totalCantidadBolsas > 10 && totalCantidadBolsas < 30) 
-	{
-		descuento = totalPrecioBruto - totalPrecioBruto * (15 / 100);
-	}
-	else 
-	{
-		if (totalCantidadBolsas > 30) 
-		{
-			descuento = totalPrecioBruto - totalPrecioBruto * (25 / 100);
-		}
-	}
-
-	//d) Informar el tipo con mas cantidad de bolsas. 
-		if (acumuladorArena > acumuladorCal && acumuladorArena > acumuladorCemento) 
-		{
-			tipoConMayorCantidadBolsas = "Arena";
-		}
-    else
-    {
-			if (acumuladorCal > acumuladorArena) 
-			{
-				tipoConMayorCantidadBolsas = "Cal";
-			}
-      else 
-	  	{
-				tipoConMayorCantidadBolsas = "Cemento";
-			}
+    }
+    //C.Informar el tipo con mas cantidad de bolsas.
+    if (cantidadBolsasArena > cantidadBolsasCal && cantidadBolsasArena > cantidadBolsasCemento) {
+        tipoMasUnidadesBolsa = "Arena";
+    }
+    else {
+        if (cantidadBolsasCal > cantidadBolsasArena && cantidadBolsasCal > cantidadBolsasCemento) {
+            tipoMasUnidadesBolsa = "Cal";
+        }
+        else {
+            tipoMasUnidadesBolsa = "Cemento";
+        }
     }
 
-	alert(`A) Importe total a pagar sin descuento: ${totalPrecioBruto}\n
-	       B) IMporte total a pagar con descuento: ${descuento}\n
-		   C) El tipo con mas cantidad de bolsas es: ${tipoConMayorCantidadBolsas}\n
-		   D) El tipo mas caro es: `);
+    //D. El tipo mas caro
+    if (tipoMasCaroArena > tipoMasCaroCal && tipoMasCaroArena > tipoMasCaroCemento) {
+        tipoMasCaro = "Arena";
+    }
+    else {
+        if (tipoMasCaroCal > tipoMasCaroArena && tipoMasCaroCal > tipoMasCaroCemento) {
+            tipoMasCaro = "Cal";
+        }
+        else {
+            tipoMasCaro = "Cemento";
+        }
+    }
+    document.write(`A. El importe total a pagar, bruto sin descuento es: ${precioTotalSinDescuento}<br>
+                    B. ${mensaje}<br>
+                    C. El tipo con mas cantidad de bolsas es: ${tipoMasUnidadesBolsa}<br>
+                    D. El tipo mas caro es: ${tipoMasCaro} `);
+
 }
 
 

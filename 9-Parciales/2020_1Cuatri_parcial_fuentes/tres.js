@@ -7,100 +7,96 @@ d) cuantas personas de la tercera edad( mas de 60 años) , tienen mas de 38 de t
 e) El promedio de edad entre los hombres solteros. */
 
 function mostrar() {
-	let nombre;
-	let edad;
-	let sexo;
-	let estadoCivil;
-	let temperaturaCorporal;
-	let mayorTemperatura;
-	let mayorTemperaturaNombre;
-	let condicionWhile;
 
-	let mayoresDeEdadViudos;
-	let banderaDelPrimero;
-	let hombresSolterosViudos;
-	let personasDeTerceraEdad;
-	let hombresSolteros;
-	let hombresEdad;
-	let promedio;
-
-	mayoresDeEdadViudos = 0;
-	personasDeTerceraEdad = 0;
-	hombresEdad = 0;
-	hombresSolteros = 0;
-	hombresSolterosViudos = 0;
-	banderaDelPrimero = true;
+    let estadoWhileIngresado;
+    let nombreIngresado;
+    let edadIngresada;
+    let sexoIngresado;
+    let estadoCivilIngresado;
+    let temperaturaCorporalIngresado;
+    let personaMayorTemperatura;
+    let banderaDelPrimero;
+    let MayoresEdadViudos;
+    let cantidadHombresSolterosViudos;
+    let contadorSolteros;
+    let edadTotalSolteros;
+    let promedioEdadHombresSolteros;
+    let personasTerceraEdadMayorTemperatura;
 
 
-	do {
+    personasTerceraEdadMayorTemperatura = 0;
+    edadTotalSolteros = 0;
+    contadorSolteros = 0;
+    cantidadHombresSolterosViudos = 0;
+    MayoresEdadViudos = 0;
+    banderaDelPrimero = 0;
+    estadoWhileIngresado = "s";
 
-		nombre = prompt("Ingresa tu nombre");
-		while (isNaN(nombre) == false) {
-			nombre = prompt("Error,ingresa tu nombre");
-		}
+    while (estadoWhileIngresado == "s") {
 
-		edad = prompt("Ingresa tu edad");
-		edad = parseInt(edad);
-		while (isNaN(edad) == true || edad < 0 || edad > 100) {
-			edad = prompt("Error,ingresa tu edad");
-		}
+        nombreIngresado = prompt("Ingrese el nombre");
+        while (isNaN(nombreIngresado) == false) {
+            nombreIngresado = prompt("Error,Ingrese el nombre");
+        }
 
-		sexo = prompt("Ingresa tu sexo, 'f' o 'm'");
-		while (isNaN(sexo) == false || sexo != "f" && sexo != "m") {
-			sexo = prompt("Error,ingresa tu sexo, 'f' o 'm'");
-		}
+        edadIngresada = prompt("Ingrese la edad");
+        edadIngresada = parseInt(edadIngresada);
+        while (isNaN(edadIngresada) == true || edadIngresada < 0 || edadIngresada > 100) {
+            edadIngresada = prompt("Error,Ingrese la edad");
+            edadIngresada = parseInt(edadIngresada);
+        }
 
-		estadoCivil = prompt("Ingresa tu estadoCivil, 'soltero', 'casado' o 'viudo'");
-		while (isNaN(estadoCivil) == false || estadoCivil != "soltero" && estadoCivil != "casado" && estadoCivil != "viudo") {
-			estadoCivil = prompt("Error,ingresa tu estadoCivil, 'soltero', 'casado' o 'viudo'");
-		}
+        sexoIngresado = prompt("Ingres el sexo");
+        while (isNaN(sexoIngresado) == false || sexoIngresado != "f" && sexoIngresado != "m") {
+            sexoIngresado = prompt("Error,Ingrese el sexo");
+        }
 
-		temperaturaCorporal = prompt("Ingresa tu temperaturaCorporal");
-		temperaturaCorporal = parseInt(temperaturaCorporal);
-		while (isNaN(temperaturaCorporal) == true || temperaturaCorporal < 35 || temperaturaCorporal > 45) {
-			temperaturaCorporal = prompt("Error,ingresa tu temperaturaCorporal");
-		}
-		//a
-		if (temperaturaCorporal > mayorTemperatura || banderaDelPrimero == true) {
-			mayorTemperatura = temperaturaCorporal;
-			mayorTemperaturaNombre = nombre;
-			banderaDelPrimero = false;
-		}
+        estadoCivilIngresado = prompt("Ingrese el estado civil");
+        while (isNaN(estadoCivilIngresado) == false || estadoCivilIngresado != "soltero" && estadoCivilIngresado != "casado" && estadoCivilIngresado != "viudo") {
+            estadoCivilIngresado = prompt("Error, Ingrese el estado civil");
+        }
 
-		switch (estadoCivil) {
-			case "viudo":
-				if (edad > 18) {
-					mayoresDeEdadViudos++;
-					if (edad > 60 && temperaturaCorporal > 38) {
-						personasDeTerceraEdad++;
-					}
-				}
-			case "soltero":
-				if(sexo == "m")
-				{
-					hombresSolterosViudos++;
-					if(estadoCivil == "soltero")
-					{
-						hombresSolteros++;
-						hombresEdad += edad;
-					}
-				}
-				break;
-			case "casado":
-				break;
-		}
+        temperaturaCorporalIngresado = prompt("Ingrese su temperatura");
+        temperaturaCorporalIngresado = parseInt(temperaturaCorporalIngresado);
+        while (isNaN(temperaturaCorporalIngresado) == true || temperaturaCorporalIngresado < 34 || temperaturaCorporalIngresado > 39) {
+            temperaturaCorporalIngresado = prompt("Error, Ingrese su temperatura");
+            temperaturaCorporalIngresado = parseInt(temperaturaCorporalIngresado);
+        }
 
-		condicionWhile = prompt("presiona 's' para continuar, de lo contracio presiona 'n'");
-	} while (condicionWhile == "s");
-	//a
-	alert(`el nombre que ingreso la temperatura mas alta es: ${mayorTemperaturaNombre}`);
-	//b
-	alert(`hay ${mayoresDeEdadViudos}, mayores de edad viudos`);
-	//c
-	alert(`hay ${hombresSolterosViudos}, hombres que estan solteros o viudos`);
-	//d
-	alert(`hay ${personasDeTerceraEdad}, personas de tercera edad que tienen mas de 38 grados`);
-	//e
-	promedio = (hombresEdad/hombresSolteros).toFixed(2);
-	alert(`el promedio de edad entre los hombres solteros es: ${promedio}`);
+        //B. Mayores de edad Viudos
+        //C. La cantidad de hombres que hay solteros o viudos.
+        //E. promedio de edad entre los hombres solteros
+        if (edadIngresada > 18 && estadoCivilIngresado == "viudo") {
+            MayoresEdadViudos++;
+        }
+        if (sexoIngresado == "m" && estadoCivilIngresado == "viudo" || estadoCivilIngresado == "soltero") {
+            cantidadHombresSolterosViudos++;
+            if (estadoCivilIngresado == "soltero") {
+                contadorSolteros++;
+                edadTotalSolteros += edadIngresada;
+            }
+        }
+
+        //A. NOmbre de la persona con mayor temperatura
+        if (temperaturaCorporalIngresado > personaMayorTemperatura || banderaDelPrimero == 0) {
+            personaMayorTemperatura = temperaturaCorporalIngresado;
+            personaMayorTemperaturaNombre = nombreIngresado;
+            banderaDelPrimero = 1;
+        }
+
+        //D.
+        if (edadIngresada > 60 && temperaturaCorporalIngresado > 38) {
+            personasTerceraEdadMayorTemperatura++;
+        }
+
+        estadoWhileIngresado = prompt("Ingrese 's' si desea continuar, de lo contario ingrese 'n'");
+    }
+    //E
+    promedioEdadHombresSolteros = edadTotalSolteros / contadorSolteros;
+
+    document.write(`A. Nombre de la persona con mayor temperatura ${personaMayorTemperaturaNombre}<br>
+                    B. Mayores de edad Viudos ${MayoresEdadViudos}<br>
+                    C. La cantidad de hombres que hay solteros o viudos es: ${cantidadHombresSolterosViudos}<br>
+                    D. La cantidad de personas mayores de 60 con temperaturas mayores a 38 son: ${personasTerceraEdadMayorTemperatura}<br>
+                    E. Promedio de edad entre los hombres solteros es: ${promedioEdadHombresSolteros.toFixed(2)}`);
 }
